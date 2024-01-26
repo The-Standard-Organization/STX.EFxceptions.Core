@@ -44,4 +44,12 @@
 		</None>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\STX.EFxceptions.Interfaces\STX.EFxceptions.Interfaces.csproj" />
+	</ItemGroup>
+
 </Project>
