@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using STX.EFxceptions.Interfaces.Brokers.DbErrorBroker;
 using STX.EFxceptions.Interfaces.Services.EFxceptions;
 
-namespace STX.EFxceptions.Identity.Core.Brokers.IdentityDbContextBases
+namespace STX.EFxceptions.Identity.Core
 {
     public class IdentityDbContextBase<TUser> : IdentityDbContext<TUser, IdentityRole, string>
         where TUser : IdentityUser
@@ -69,7 +69,7 @@ namespace STX.EFxceptions.Identity.Core.Brokers.IdentityDbContextBases
             }
             catch (TException tException)
             {
-                this.eFxceptionService.ThrowMeaningfulException(
+                eFxceptionService.ThrowMeaningfulException(
                     tException);
                 throw;
             }
@@ -85,7 +85,7 @@ namespace STX.EFxceptions.Identity.Core.Brokers.IdentityDbContextBases
             }
             catch (TException tException)
             {
-                this.eFxceptionService.ThrowMeaningfulException(tException);
+                eFxceptionService.ThrowMeaningfulException(tException);
                 throw;
             }
         }
@@ -98,7 +98,7 @@ namespace STX.EFxceptions.Identity.Core.Brokers.IdentityDbContextBases
             }
             catch (TException tException)
             {
-                this.eFxceptionService.ThrowMeaningfulException(tException);
+                eFxceptionService.ThrowMeaningfulException(tException);
                 throw;
             }
         }
@@ -111,7 +111,7 @@ namespace STX.EFxceptions.Identity.Core.Brokers.IdentityDbContextBases
             }
             catch (TException tException)
             {
-                this.eFxceptionService.ThrowMeaningfulException(tException);
+                eFxceptionService.ThrowMeaningfulException(tException);
                 throw;
             }
         }
@@ -123,8 +123,8 @@ namespace STX.EFxceptions.Identity.Core.Brokers.IdentityDbContextBases
 
         private void InitializeInternalServices()
         {
-            this.errorBroker = CreateErrorBroker();
-            this.eFxceptionService = CreateEFxceptionService(this.errorBroker);
+            errorBroker = CreateErrorBroker();
+            eFxceptionService = CreateEFxceptionService(errorBroker);
         }
     }
 }

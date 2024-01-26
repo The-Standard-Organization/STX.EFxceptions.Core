@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using STX.EFxceptions.Interfaces.Brokers.DbErrorBroker;
 using STX.EFxceptions.Interfaces.Services.EFxceptions;
 
-namespace STX.EFxceptions.Core.Brokers.DbContextBases
+namespace STX.EFxceptions.Core
 {
     public abstract class DbContextBase<TException> : DbContext
     where TException : Exception
@@ -86,7 +86,7 @@ namespace STX.EFxceptions.Core.Brokers.DbContextBases
         }
 
         protected abstract IDbErrorBroker<TException> CreateErrorBroker();
-        
+
         protected abstract IEFxceptionService<TException> CreateEFxceptionService(
             IDbErrorBroker<TException> errorBroker);
     }
