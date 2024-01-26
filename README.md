@@ -54,7 +54,7 @@ These core libraries are designed to be used as a base class for your DbContext 
 
 ## Example
 
-Lets use SQL Server as an example.  If you would like to create a custom DbContext implementation that uses SQL Server, you can inherit from the abstract base class provided by this library.
+Lets use SQL Server as an example.  If you would like to create a custom implementation that uses SQL Server, you can inherit from the abstract base class provided by this library.
 
 ```cs
     public class EFxceptionsContext : DbContextBase<SqlException>
@@ -120,15 +120,15 @@ Finally, we will have to do an implementation of the `IEFxceptionService` interf
             switch (code)
             {
                 case 207:
-                    throw new InvalidColumnNameException(message);
+                    throw new InvalidColumnNameSqlServerException(message);
                 case 208:
-                    throw new InvalidObjectNameException(message);
+                    throw new InvalidObjectNameSqlServerException(message);
                 case 547:
-                    throw new ForeignKeyConstraintConflictException(message);
+                    throw new ForeignKeyConstraintConflictSqlServerException(message);
                 case 2601:
-                    throw new DuplicateKeyWithUniqueIndexException(message);
+                    throw new DuplicateKeyWithUniqueIndexSqlServerException(message);
                 case 2627:
-                    throw new DuplicateKeyException(message);
+                    throw new DuplicateKeySqlServerException(message);
             }
         }
 
