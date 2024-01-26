@@ -1,2 +1,2 @@
-# STX.EFxceptions
+# STX.EFxceptions.Core
 A standardized .NET library that provides abstract base DbContext classes, which concrete implementations can use to capture exceptions thrown by Entity Framework and then convert them into meaningful exceptions...
