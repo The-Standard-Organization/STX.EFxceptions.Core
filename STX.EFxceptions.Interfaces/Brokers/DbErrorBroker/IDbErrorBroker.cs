@@ -8,6 +8,6 @@ namespace STX.EFxceptions.Interfaces.Brokers.DbErrorBroker
 {
     public interface IDbErrorBroker<TException> where TException : Exception
     {
-        int GetSqlErrorCode(TException exception);
+        int GetErrorCode(TException exception);
     }
 }
