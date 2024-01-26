@@ -86,6 +86,7 @@ namespace STX.EFxceptions.Core.Brokers.DbContextBases
         }
 
         protected abstract IDbErrorBroker<TException> CreateErrorBroker();
+        
         protected abstract IEFxceptionService<TException> CreateEFxceptionService(
             IDbErrorBroker<TException> errorBroker);
     }
