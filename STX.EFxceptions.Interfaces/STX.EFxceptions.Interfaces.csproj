@@ -4,9 +4,9 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>disable</Nullable>
-		<Title>STX.EFxceptions.Base</Title>
-		<Product>STX.EFxceptions.Base</Product>
-		<PackageId>STX.EFxceptions.Base</PackageId>
+		<Title>STX.EFxceptions.Interfaces</Title>
+		<Product>STX.EFxceptions.Interfaces</Product>
+		<PackageId>STX.EFxceptions.Interfaces</PackageId>
 		<Authors>The Standard Community</Authors>
 		<Company>The Standard Community</Company>
 		<Description>A Standardized .NET library that provides interfaces for the core components to captures exceptions thrown by EntityFramework and converts them into meaningful exceptions...</Description>
