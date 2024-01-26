@@ -20,7 +20,7 @@ namespace STX.EFxceptions.Infrastructure.Build
 
             var githubPipeline = new GithubPipeline
             {
-                Name = ".Net",
+                Name = "Build",
 
                 OnEvents = new Events
                 {
