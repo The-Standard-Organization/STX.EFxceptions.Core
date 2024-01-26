@@ -118,7 +118,8 @@ namespace STX.EFxceptions.Identity.Core.Brokers.IdentityDbContextBases
 
         protected abstract IDbErrorBroker<TException> CreateErrorBroker();
 
-        protected abstract IEFxceptionService<TException> CreateEFxceptionService(IDbErrorBroker<TException> errorBroker);
+        protected abstract IEFxceptionService<TException> CreateEFxceptionService(
+            IDbErrorBroker<TException> errorBroker);
 
         private void InitializeInternalServices()
         {
