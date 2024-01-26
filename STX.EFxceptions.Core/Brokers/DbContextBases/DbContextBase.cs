@@ -23,16 +23,6 @@ namespace STX.EFxceptions.Core.Brokers.DbContextBases
         public DbContextBase(DbContextOptions options)
             : base(options) => InitializeInternalServices();
 
-        private void InitializeInternalServices()
-        {
-            this.errorBroker = CreateErrorBroker();
-            this.eFxceptionService = CreateEFxceptionService(this.errorBroker);
-        }
-
-        protected abstract IDbErrorBroker<TException> CreateErrorBroker();
-        protected abstract IEFxceptionService<TException> CreateEFxceptionService(
-            IDbErrorBroker<TException> errorBroker);
-
         public override async Task<int> SaveChangesAsync(
             CancellationToken cancellationToken = default)
         {
@@ -88,5 +78,15 @@ namespace STX.EFxceptions.Core.Brokers.DbContextBases
                 throw;
             }
         }
+
+        private void InitializeInternalServices()
+        {
+            this.errorBroker = CreateErrorBroker();
+            this.eFxceptionService = CreateEFxceptionService(this.errorBroker);
+        }
+
+        protected abstract IDbErrorBroker<TException> CreateErrorBroker();
+        protected abstract IEFxceptionService<TException> CreateEFxceptionService(
+            IDbErrorBroker<TException> errorBroker);
     }
 }
