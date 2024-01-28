@@ -51,7 +51,7 @@ namespace STX.EFxceptions.Identity.Core
         where TUserToken : IdentityUserToken<TKey>
         where TException : Exception
     {
-        private IEFxceptionService<TException> eFxceptionService;
+        private IEFxceptionService eFxceptionService;
         private IDbErrorBroker<TException> errorBroker;
 
         protected IdentityDbContextBase() =>
@@ -67,10 +67,10 @@ namespace STX.EFxceptions.Identity.Core
             {
                 return await base.SaveChangesAsync(cancellationToken);
             }
-            catch (TException tException)
+            catch (DbUpdateException dbUpdateException)
             {
-                eFxceptionService.ThrowMeaningfulException(
-                    tException);
+                this.eFxceptionService.ThrowMeaningfulException(
+                    dbUpdateException);
                 throw;
             }
         }
@@ -83,9 +83,9 @@ namespace STX.EFxceptions.Identity.Core
             {
                 return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
             }
-            catch (TException tException)
+            catch (DbUpdateException dbUpdateException)
             {
-                eFxceptionService.ThrowMeaningfulException(tException);
+                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
                 throw;
             }
         }
@@ -96,9 +96,9 @@ namespace STX.EFxceptions.Identity.Core
             {
                 return base.SaveChanges();
             }
-            catch (TException tException)
+            catch (DbUpdateException dbUpdateException)
             {
-                eFxceptionService.ThrowMeaningfulException(tException);
+                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
                 throw;
             }
         }
@@ -109,16 +109,16 @@ namespace STX.EFxceptions.Identity.Core
             {
                 return base.SaveChanges(acceptAllChangesOnSuccess);
             }
-            catch (TException tException)
+            catch (DbUpdateException dbUpdateException)
             {
-                eFxceptionService.ThrowMeaningfulException(tException);
+                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
                 throw;
             }
         }
 
         protected abstract IDbErrorBroker<TException> CreateErrorBroker();
 
-        protected abstract IEFxceptionService<TException> CreateEFxceptionService(
+        protected abstract IEFxceptionService CreateEFxceptionService(
             IDbErrorBroker<TException> errorBroker);
 
         private void InitializeInternalServices()

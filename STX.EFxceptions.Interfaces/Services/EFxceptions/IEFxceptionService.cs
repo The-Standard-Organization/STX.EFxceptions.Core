@@ -2,12 +2,12 @@
 // Copyright(c) The Standard Organization: A coalition of the Good-Hearted Engineers
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace STX.EFxceptions.Interfaces.Services.EFxceptions
 {
-    public interface IEFxceptionService<TException> where TException : Exception
+    public interface IEFxceptionService
     {
-        void ThrowMeaningfulException(TException exception);
+        void ThrowMeaningfulException(DbUpdateException dbUpdateException);
     }
 }
