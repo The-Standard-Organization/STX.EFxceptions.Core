@@ -14,7 +14,7 @@ namespace STX.EFxceptions.Core
     public abstract class DbContextBase<TException> : DbContext
     where TException : Exception
     {
-        private IEFxceptionService<TException> eFxceptionService;
+        private IEFxceptionService eFxceptionService;
         private IDbErrorBroker<TException> errorBroker;
 
         protected DbContextBase() =>
@@ -30,10 +30,10 @@ namespace STX.EFxceptions.Core
             {
                 return await base.SaveChangesAsync(cancellationToken);
             }
-            catch (TException tException)
+            catch (DbUpdateException dbUpdateException)
             {
                 this.eFxceptionService.ThrowMeaningfulException(
-                    tException);
+                    dbUpdateException);
                 throw;
             }
         }
@@ -46,9 +46,9 @@ namespace STX.EFxceptions.Core
             {
                 return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
             }
-            catch (TException tException)
+            catch (DbUpdateException dbUpdateException)
             {
-                this.eFxceptionService.ThrowMeaningfulException(tException);
+                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
                 throw;
             }
         }
@@ -59,9 +59,9 @@ namespace STX.EFxceptions.Core
             {
                 return base.SaveChanges();
             }
-            catch (TException tException)
+            catch (DbUpdateException dbUpdateException)
             {
-                this.eFxceptionService.ThrowMeaningfulException(tException);
+                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
                 throw;
             }
         }
@@ -72,9 +72,9 @@ namespace STX.EFxceptions.Core
             {
                 return base.SaveChanges(acceptAllChangesOnSuccess);
             }
-            catch (TException tException)
+            catch (DbUpdateException dbUpdateException)
             {
-                this.eFxceptionService.ThrowMeaningfulException(tException);
+                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
                 throw;
             }
         }
@@ -87,7 +87,7 @@ namespace STX.EFxceptions.Core
 
         protected abstract IDbErrorBroker<TException> CreateErrorBroker();
 
-        protected abstract IEFxceptionService<TException> CreateEFxceptionService(
+        protected abstract IEFxceptionService CreateEFxceptionService(
             IDbErrorBroker<TException> errorBroker);
     }
 }
