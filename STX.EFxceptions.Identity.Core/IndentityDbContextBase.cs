@@ -16,7 +16,7 @@ namespace STX.EFxceptions.Identity.Core
     public class IdentityDbContextBase<TUser> : IdentityDbContext<TUser, IdentityRole, string>
         where TUser : IdentityUser
     {
-        protected IdentityDbContextBase()
+        protected IdentityDbContextBase() : base()
         { }
 
         public IdentityDbContextBase(DbContextOptions options) : base(options)
@@ -31,7 +31,7 @@ namespace STX.EFxceptions.Identity.Core
         where TKey : IEquatable<TKey>
         where TException : Exception
     {
-        protected IdentityDbContextBase()
+        protected IdentityDbContextBase() : base()
         { }
 
         public IdentityDbContextBase(DbContextOptions options) : base(options)
