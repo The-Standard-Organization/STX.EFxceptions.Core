@@ -1,13 +1,13 @@
 ﻿// ----------------------------------------------------------------------------------
-// Copyright(c) The Standard Organization: A coalition of the Good-Hearted Engineers
+// Copyright (c) The Standard Organization: A coalition of the Good-Hearted Engineers
 // ----------------------------------------------------------------------------------
 
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using STX.EFxceptions.Interfaces.Brokers.DbErrorBroker;
-using STX.EFxceptions.Interfaces.Services.EFxceptions;
+using STX.EFxceptions.Abstractions.Brokers.DbErrorBroker;
+using STX.EFxceptions.Abstractions.Services.EFxceptions;
 
 namespace STX.EFxceptions.Core
 {
