@@ -7,15 +7,15 @@
 # STX.EFxceptions.Core
 
 ## Introduction
-We have designed and developed this library as a abstract base wrapper around the existing EntityFramework DbContext implementation to provide the following values:
+We have designed and developed this library as an abstract base wrapper around the existing EntityFramework DbContext implementation to provide the following values:
 
-1. Meaningful exceptions for error codes.
+1. Meaningful exceptions for error codes
 2. Simplified integrations
-3. Test-friendly implementation.
+3. Test-friendly implementation
 
 This solution consists of the following core projects:
 
-- A ***STX.EFxceptions.Interfaces*** : Standardized .NET library that provides interfaces for the core components to capture exceptions thrown by EntityFramework and converts them into meaningful exceptions.
+- A ***STX.EFxceptions.Abstractions*** : Standardized .NET library that provides interfaces for the core components to capture exceptions thrown by EntityFramework and converts them into meaningful exceptions.
 - A ***STX.EFxceptions.Core*** : Standardized .NET library that provides an abstract DBContext to capture exceptions thrown by EntityFramework and converts them into meaningful exceptions.
 - A ***STX.EFxceptions.Identity.Core*** : Standardized .NET library that provides an abstract DBContext that implements AspNetCore.Identity to captures exceptions thrown by EntityFramework and converts them into meaningful exceptions.
 
@@ -37,9 +37,9 @@ The Standard Community as a promise to you is in upholding these values.
 
 ## Get the Packages
 
-### STX.EFxceptions.Interfaces
+### STX.EFxceptions.Abstractions
 
-[![preview version](https://img.shields.io/nuget/vpre/STX.EFxceptions.Interfaces)](https://www.nuget.org/packages/STX.EFxceptions.Interfaces/absoluteLatest)
+[![preview version](https://img.shields.io/nuget/vpre/STX.EFxceptions.Abstractions)](https://www.nuget.org/packages/STX.EFxceptions.Abstractions/absoluteLatest)
 
 This library provides the interfaces which are used by the core components to get error codes and provide meaningful exceptions.
 
