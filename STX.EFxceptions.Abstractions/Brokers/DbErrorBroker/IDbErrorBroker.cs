@@ -6,8 +6,8 @@ using System;
 
 namespace STX.EFxceptions.Abstractions.Brokers.DbErrorBroker
 {
-    public interface IDbErrorBroker<TException> where TException : Exception
+    public interface IDbErrorBroker<TException, TErrorCode> where TException : Exception
     {
-        int GetErrorCode(TException exception);
+        TErrorCode GetErrorCode(TException exception);
     }
 }
