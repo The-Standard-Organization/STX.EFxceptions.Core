@@ -23,9 +23,9 @@ namespace STX.EFxceptions.Identity.Core
         { }
     }
 
-    public abstract class IdentityDbContextBase<TUser, TRole, TKey, TException>
+    public abstract class IdentityDbContextBase<TUser, TRole, TKey, TException, TErrorCode>
         : IdentityDbContextBase<TUser, TRole, TKey, IdentityUserClaim<TKey>, IdentityUserRole<TKey>,
-            IdentityUserLogin<TKey>, IdentityRoleClaim<TKey>, IdentityUserToken<TKey>, TException>
+            IdentityUserLogin<TKey>, IdentityRoleClaim<TKey>, IdentityUserToken<TKey>, TException, TErrorCode>
         where TUser : IdentityUser<TKey>
         where TRole : IdentityRole<TKey>
         where TKey : IEquatable<TKey>
@@ -39,7 +39,7 @@ namespace STX.EFxceptions.Identity.Core
     }
 
     public abstract class IdentityDbContextBase<
-        TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken, TException>
+        TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken, TException, TErrorCode>
         : IdentityDbContext<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken>
         where TUser : IdentityUser<TKey>
         where TRole : IdentityRole<TKey>
@@ -52,7 +52,7 @@ namespace STX.EFxceptions.Identity.Core
         where TException : Exception
     {
         private IEFxceptionService eFxceptionService;
-        private IDbErrorBroker<TException> errorBroker;
+        private IDbErrorBroker<TException, TErrorCode> errorBroker;
 
         protected IdentityDbContextBase() =>
             InitializeInternalServices();
@@ -116,10 +116,10 @@ namespace STX.EFxceptions.Identity.Core
             }
         }
 
-        protected abstract IDbErrorBroker<TException> CreateErrorBroker();
+        protected abstract IDbErrorBroker<TException, TErrorCode> CreateErrorBroker();
 
         protected abstract IEFxceptionService CreateEFxceptionService(
-            IDbErrorBroker<TException> errorBroker);
+            IDbErrorBroker<TException, TErrorCode> errorBroker);
 
         private void InitializeInternalServices()
         {
